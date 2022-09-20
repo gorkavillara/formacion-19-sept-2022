@@ -17,11 +17,32 @@ export default class ComponenteClase extends Component<Props, State> {
 
       console.log("incrementando")
       // contador++
-      this.setState({ contador: this.state.contador + 1 })
+      // this.setState({ contador: this.state.contador + 1 })
+      this.setState(estadoPrevio => ({ contador: estadoPrevio.contador + 1 }))
       console.log("valor", this.state.contador)
   }
 
   nuevaFuncion = (num: number) => 2 * num
+
+  componentDidMount(): void {
+    console.log("El componente acaba de montarse")
+    // Hacer llamadas a apis para inicializar el estado
+  }
+
+  shouldComponentUpdate(nextProps: Readonly<Props>, nextState: Readonly<State>, nextContext: any): boolean {
+    // console.log("El componente va a actualizarse")
+    return true
+  }
+
+  componentDidUpdate(prevProps: Readonly<Props>, prevState: Readonly<State>, snapshot?: any): void {
+    console.log("El componente se ha actualizado")
+    
+  }
+
+  componentWillUnmount(): void {
+    console.log("El componente se va a desmontar")
+    // Eliminar eventListeners
+  }
 
   render() {
     // const texto = this.props.texto
