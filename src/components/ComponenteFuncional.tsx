@@ -18,6 +18,8 @@ const ComponenteFuncional = ({ texto, valorInicial = 0 }: PropTypes) => {
 
   const decrementar = () => {
     // setContador(contador - 1)
+    let array = []
+    array.push({ nombre: "Gorka", ciudad: "San Sebastián" })
     setContador((prevContador) => prevContador - 1);
   };
   const incrementar = () => setContador(prevContador => prevContador + 1) //eslint-disable-line
