@@ -16,8 +16,8 @@ const Principal = (props: Props) => {
         WordHelloWorld
       </h1>
       <div className="botonera">
-        {/* <button className={`boton-inicio${tituloHover ? " rojo" : ""}`}> */}
-        <button className={tituloHover ? "boton-inicio rojo" : "boton-inicio"}>
+        <button className={`boton-inicio${tituloHover ? " rojo" : ""}`}>
+        {/* <button className={tituloHover ? "boton-inicio rojo" : "boton-inicio"}> */}
           Iniciar
         </button>
       </div>

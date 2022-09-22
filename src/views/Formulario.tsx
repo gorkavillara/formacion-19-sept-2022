@@ -1,14 +1,38 @@
-import axios from "axios";
-import React, { useState } from "react";
+import axios, { AxiosResponse } from "axios";
+import React, { useEffect, useState } from "react";
+import { Alumno } from "../models";
 
 import "./Formulario.scss";
 
+const url =
+  "https://us-central1-fir-api-a3355.cloudfunctions.net/app/api/alumnos";
+
 const Formulario = () => {
-  const [formValues, setFormValues] = useState({
+  const [formValues, setFormValues] = useState<Alumno>({
     username: "",
     email: "",
     password: "",
   });
+
+  const [alumnos, setAlumnos] = useState<Alumno[] | []>([]);
+
+  // const [toggle, setToggle] = useState<boolean>(false)
+  const fetchAlumnos = async () => {
+    // axios
+    //   .post(url, { action: "obtenAlumnos" })
+    //   .then((res: AxiosResponse) => console.log(res))
+    //   .catch((e) => console.error("ERROR DE AXIOS", e));
+    const res: AxiosResponse<any, any> | void = await axios
+      .post(url, {
+        action: "obtenAlumnos",
+      })
+      .catch((e) => console.error(e));
+    res && setAlumnos(res.data.alumnos);
+  };
+
+  useEffect(() => {
+    fetchAlumnos();
+  }, []);
 
   const formSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
@@ -16,8 +40,7 @@ const Formulario = () => {
     // console.log(e.target[0].value);
     // obtener los valores de los inputs
     console.log(formValues);
-    const url =
-      "https://us-central1-fir-api-a3355.cloudfunctions.net/app/api/alumnos";
+    // análisis/validación de datos
 
     const res = await axios
       .post(url, {
@@ -26,6 +49,9 @@ const Formulario = () => {
       })
       .catch((e) => console.error(e));
 
+    fetchAlumnos();
+
+    // setToggle(prev => !prev)
     console.log(res);
   };
   return (
@@ -59,8 +85,28 @@ const Formulario = () => {
           }
           placeholder="Tu Contraseña"
         />
-        <button>Enviar</button>
+        <button type="submit">Enviar</button>
       </form>
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Password</th>
+            </tr>
+          </thead>
+          <tbody>
+            {alumnos.map((alumno: Alumno, index: number) => (
+              <tr key={index}>
+                <td>{alumno.username}</td>
+                <td>{alumno.email}</td>
+                <td>{alumno.password}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

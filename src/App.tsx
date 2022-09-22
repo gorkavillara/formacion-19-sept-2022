@@ -8,10 +8,14 @@ import ComponentePadreLista from "./components/ComponentePadreLista";
 import ComponenteReferencias from "./components/ComponenteReferencias";
 import GestionCicloDeVida from "./components/GestionCicloDeVida";
 import Formulario from "./views/Formulario";
+import FormularioFormik from "./views/FormularioFormik";
+import ListaTareas from "./views/ListaTareas";
 import Principal from "./views/Principal";
 
+type VRoutes = "home" | "form" | "formik" | "tareas"
+
 function App() {
-  const [vRoute, setVRoute] = useState<"home" | "form">("form")
+  const [vRoute, setVRoute] = useState<VRoutes>("tareas");
   return (
     <div className="App">
       {/* <ComponenteClase texto="Hola soy el texto 1" /> */}
@@ -25,6 +29,8 @@ function App() {
       {/* <ComponenteReferencias /> */}
       {vRoute === "home" && <Principal />}
       {vRoute === "form" && <Formulario />}
+      {vRoute === "formik" && <FormularioFormik />}
+      {vRoute === "tareas" && <ListaTareas />}
     </div>
   );
 }
