@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
 
+import "./Formulario.scss";
+
 const Formulario = () => {
   const [formValues, setFormValues] = useState({
     username: "",
@@ -23,12 +25,12 @@ const Formulario = () => {
         alumno: formValues,
       })
       .catch((e) => console.error(e));
-      
+
     console.log(res);
   };
   return (
-    <div>
-      <h2>Regístrate como jugador</h2>
+    <div className="vista-formulario">
+      <h2 className="titulo">Regístrate como jugador</h2>
       <form onSubmit={formSubmit}>
         <input
           type="text"

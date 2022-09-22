@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import React, { useState } from "react";
-import "./App.css";
+import "./App.scss";
 import ComponenteClase from "./components/ComponenteClase";
 import ComponenteFuncional from "./components/ComponenteFuncional";
 import ComponentePadreLista from "./components/ComponentePadreLista";
@@ -13,7 +13,7 @@ import Principal from "./views/Principal";
 function App() {
   const [vRoute, setVRoute] = useState<"home" | "form">("form")
   return (
-    <>
+    <div className="App">
       {/* <ComponenteClase texto="Hola soy el texto 1" /> */}
       {/* <ComponenteFuncional
         texto="Texto del funcional"
@@ -25,7 +25,7 @@ function App() {
       {/* <ComponenteReferencias /> */}
       {vRoute === "home" && <Principal />}
       {vRoute === "form" && <Formulario />}
-    </>
+    </div>
   );
 }
 

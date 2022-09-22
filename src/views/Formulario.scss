@@ -1,0 +1,50 @@
+$azul-corporativo: #c6c6f8;
+$texto-azul: #2b2b55;
+
+div.vista-formulario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h2.titulo {
+    color: $azul-corporativo;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    input {
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        border: none;
+        outline: none;
+        &:focus {
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8)
+        }
+    }
+    button {
+        width: 100%;
+        border: none;
+        background-color: #2ca554;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: all 0.15s;
+        &:hover {
+            transform: scale(1.1);
+
+        }
+    }
+  }
+  table {
+    font-size: 0.8rem;
+    color: $azul-corporativo;
+    thead tr th {
+
+        background-color: $azul-corporativo;
+        color: $texto-azul;
+        padding: 0.5rem 1rem;
+    }
+  }
+}
