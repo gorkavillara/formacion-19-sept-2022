@@ -7,5 +7,13 @@ export type Articulo = {
 export type Alumno = {
   username: string;
   email: string;
-  password?:string;
-}
+  password?: string;
+};
+
+export const defaultAlumno: Alumno = { username: "", email: "" };
+
+export type Tarea = {
+  id: number;
+  texto: string;
+  completada: boolean;
+};
