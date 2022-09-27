@@ -26,7 +26,11 @@ import Principal from "./views/Principal";
 // type VRoutes = "home" | "form" | "formik" | "tareas";
 
 function App() {
-  const [user, setUser] = useState<Alumno>({ username: "gorka", email: "gorka" });
+  const [user, setUser] = useState<Alumno | null>({
+    username: "Alfonso",
+    email: "alfonso@alfonso",
+  });
+  // const [user, setUser] = useState<Alumno | null>(null);
   // const [vRoute, setVRoute] = useState<VRoutes>("home");
   const activeHandler = ({ isActive }: { isActive: boolean }) =>
     isActive ? "selected" : "";
@@ -51,13 +55,22 @@ function App() {
             </li>
             <li>
               {/* <button onClick={() => setVRoute("formik")}>Formik</button> */}
+              {user !== null ? (
+                <NavLink className={activeHandler} to="/perfil">
+                  Perfil
+                </NavLink>
+              ) : (
+                <NavLink className={activeHandler} to="/login">
+                  Login
+                </NavLink>
+              )}
             </li>
             <li>
               {/* <button onClick={() => setVRoute("tareas")}>Tareas</button> */}
             </li>
           </ul>
         </div>
-        <AppRoutes user={user} />
+        <AppRoutes user={user} setUser={setUser} />
         {/* <ComponenteClase texto="Hola soy el texto 1" /> */}
         {/* <ComponenteFuncional
         texto="Texto del funcional"
