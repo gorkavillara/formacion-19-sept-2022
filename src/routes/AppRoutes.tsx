@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import Principal from "../views/Principal";
 import ListaTareas from "../views/ListaTareas";
@@ -9,13 +9,11 @@ import { Alumno } from "../models";
 import UserProtectedRoute from "./UserProtectedRoute";
 import Login from "../views/Login";
 import Usuarios from "../views/Usuarios";
+import Perfil from "../views/Perfil";
+import { AppContext } from "../contexts/AppContextProvider";
 
-type RoutesProps = {
-  user: Alumno | null;
-  setUser: React.Dispatch<React.SetStateAction<Alumno | null>>;
-};
-
-const AppRoutes = ({ user, setUser }: RoutesProps) => {
+const AppRoutes = () => {
+  const { user, setUser } = useContext(AppContext)
   return (
     <Routes>
       <Route index element={<Principal />} />
@@ -32,10 +30,7 @@ const AppRoutes = ({ user, setUser }: RoutesProps) => {
         element={
           <UserProtectedRoute user={user}>
             {user !== null ? (
-              <>
-                <h3>Tu usuario es: {user?.username}</h3>
-                <button onClick={() => setUser(null)}>Cerrar Sesión</button>
-              </>
+              <Perfil />
             ) : (
               <h3>No hay ningún usuario</h3>
             )}
