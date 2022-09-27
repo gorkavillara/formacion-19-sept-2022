@@ -54,6 +54,16 @@ function App() {
               </NavLink>
             </li>
             <li>
+              <NavLink className={activeHandler} to="/form">
+                Formulario
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className={activeHandler} to="/alumnos">
+                Alumnos
+              </NavLink>
+            </li>
+            <li>
               {/* <button onClick={() => setVRoute("formik")}>Formik</button> */}
               {user !== null ? (
                 <NavLink className={activeHandler} to="/perfil">

@@ -2,12 +2,13 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
+import { Tarea } from "../models";
 
 const DetalleTarea = () => {
   const { id } = useParams();
   const { todos } = useSelector((state: RootState) => state);
 
-  const tarea = todos.find((todo) => todo.id === Number(id));
+  const tarea = todos.find((todo: Tarea) => todo.id === Number(id));
 
   console.log(tarea);
   // console.log(props.match.params)

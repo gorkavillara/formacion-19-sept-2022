@@ -8,6 +8,7 @@ import FormularioFormik from "../views/FormularioFormik";
 import { Alumno } from "../models";
 import UserProtectedRoute from "./UserProtectedRoute";
 import Login from "../views/Login";
+import Usuarios from "../views/Usuarios";
 
 type RoutesProps = {
   user: Alumno | null;
@@ -42,6 +43,7 @@ const AppRoutes = ({ user, setUser }: RoutesProps) => {
         }
       />
       <Route path="login" element={<Login setUser={setUser} />} />
+      <Route path="alumnos" element={<Usuarios />} />
       <Route path="*" element={<h3>404 no encontrado</h3>} />
     </Routes>
   );
