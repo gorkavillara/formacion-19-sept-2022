@@ -1,39 +1,31 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
 import { Tarea } from "../models";
-import { RootState } from "../store/store";
-import {
-  resetTodos,
-  addTodo,
-  completeTodo,
-} from "../features/todos/todosSlice";
+import { AppContext } from "../contexts/AppContextProvider";
 
 const ListaTareas = () => {
-  const todos = useSelector((state: RootState) => state.todos);
-  // console.log(todos);
-
-  const dispatch = useDispatch();
-
-  const [tareas, setTareas] = useState<Tarea[]>([]);
+  const {tareas, setTareas} = useContext(AppContext);
   const [nuevaTarea, setNuevaTarea] = useState<string>("");
   const limpiarTareas = () => {
     // Lógica para limpiar (tener un estado con un array vacío)
-    dispatch(resetTodos());
+    setTareas([]);
   };
-
-  // const altaNuevaTarea = () => // Gestión local del estado
-  //   setTareas([
-  //     ...tareas,
-  //     { id: tareas.length, texto: nuevaTarea, completada: false },
-  //   ]);
 
   const altaNuevaTarea = () => {
-    dispatch(addTodo({ texto: nuevaTarea }));
+    setTareas((tareas: Tarea[]) => [
+      ...tareas,
+      { id: tareas.length, texto: nuevaTarea, completada: false },
+    ]);
   };
 
-  console.log(todos);
-  // localStorage.setItem("primerTodo", JSON.stringify(todos[0]));
+  const toggleTarea = (id: number) => {
+    setTareas((tareas: Tarea[]) =>
+      tareas.map((tarea: Tarea) =>
+        tarea.id === id ? { ...tarea, completada: !tarea.completada } : tarea
+      )
+    );
+  };
+
   return (
     <div style={{ color: "white" }}>
       <Outlet />
@@ -46,14 +38,12 @@ const ListaTareas = () => {
       <button onClick={altaNuevaTarea}>Añadir</button>
       <button onClick={limpiarTareas}>Limpiar</button>
       <ul>
-        {todos.map((tarea: Tarea) => (
+        {tareas.map((tarea: Tarea) => (
           <li
             key={tarea.id}
             style={{ textDecoration: tarea.completada ? "line-through" : "" }}
           >
-            <span onClick={() => dispatch(completeTodo({ id: tarea.id }))}>
-              {tarea.texto}
-            </span>
+            <span onClick={() => toggleTarea(tarea.id)}>{tarea.texto}</span>
             <Link to={`/tareas/${tarea.id}`}>Ver detalles</Link>
           </li>
         ))}

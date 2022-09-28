@@ -1,18 +1,12 @@
-import { useSelector, useDispatch } from "react-redux";
-
-import { fetchUsers } from "../features/users/usersSlice";
 
 import "./Formulario.scss";
 
 import { Alumno } from "../models";
-import { RootState } from "../store/store";
+import { useContext } from "react";
+import { AppContext } from "../contexts/AppContextProvider";
 
 const Usuarios = () => {
-  const alumnos = useSelector((state: RootState) => state.users)
-  
-  const dispatch = useDispatch()
-  const fetchAlumnos = () => dispatch(fetchUsers())
-
+  const { alumnos, fetchAlumnos } = useContext(AppContext)
   return (
     <div className="vista-formulario">
       <h2 className="titulo">Alumnos registrados</h2>

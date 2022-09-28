@@ -1,17 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { RootState } from "../store/store";
 import { Tarea } from "../models";
+import { AppContext } from "../contexts/AppContextProvider";
 
 const DetalleTarea = () => {
   const { id } = useParams();
-  const { todos } = useSelector((state: RootState) => state);
+  const { tareas } = useContext(AppContext)
 
-  const tarea = todos.find((todo: Tarea) => todo.id === Number(id));
+  const tarea = tareas.find((tarea: Tarea) => tarea.id === Number(id));
 
-  console.log(tarea);
-  // console.log(props.match.params)
   return (
     <div>
       {tarea ? (

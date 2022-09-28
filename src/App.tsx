@@ -31,57 +31,38 @@ function App() {
     <AppContextProvider>
       <BrowserRouter>
         <div className="App">
-          <div>
-            <ul className="nav-bar">
-              <li>
-                {/* <button onClick={() => setVRoute("home")}>Home</button> */}
-                {/* <a href="/">Home</a> */}
-                <NavLink className={activeHandler} to="/" end>
-                  Home
-                </NavLink>
-              </li>
-              <li>
-                {/* <button onClick={() => setVRoute("form")}>Form</button> */}
-                {/* <a href="/tareas">Tareas</a> */}
-                <NavLink className={activeHandler} to="/tareas">
-                  Tareas
-                </NavLink>
-              </li>
-              <li>
-                <NavLink className={activeHandler} to="/form">
-                  Formulario
-                </NavLink>
-              </li>
-              <li>
-                <NavLink className={activeHandler} to="/alumnos">
-                  Alumnos
-                </NavLink>
-              </li>
-              <li>
-                <NavLink className={activeHandler} to="/perfil">
-                  Perfil
-                </NavLink>
-              </li>
-              <li>
-                {/* <button onClick={() => setVRoute("formik")}>Formik</button> */}
-                {/* {user !== null ? (
-                  <NavLink className={activeHandler} to="/perfil">
-                    Perfil
-                  </NavLink>
-                ) : (
-                  <NavLink className={activeHandler} to="/login">
-                    Login
-                  </NavLink>
-                )} */}
-                <NavLink className={activeHandler} to="/login">
-                  Login
-                </NavLink>
-              </li>
-              <li>
-                {/* <button onClick={() => setVRoute("tareas")}>Tareas</button> */}
-              </li>
-            </ul>
-          </div>
+          <ul className="nav-bar">
+            <li>
+              <NavLink className={activeHandler} to="/" end>
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className={activeHandler} to="/tareas">
+                Tareas
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className={activeHandler} to="/form">
+                Formulario
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className={activeHandler} to="/alumnos">
+                Alumnos
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className={activeHandler} to="/perfil">
+                Perfil
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className={activeHandler} to="/login">
+                Login
+              </NavLink>
+            </li>
+          </ul>
           <AppRoutes />
           {/* <ComponenteClase texto="Hola soy el texto 1" /> */}
           {/* <ComponenteFuncional
