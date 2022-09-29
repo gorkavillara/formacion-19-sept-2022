@@ -77,6 +77,8 @@ function App() {
       {vRoute === "form" && <Formulario />}
       {vRoute === "formik" && <FormularioFormik />}
       {vRoute === "tareas" && <ListaTareas />} */}
+          <span>Entorno: {process.env.NODE_ENV}</span>
+          <span>Usuario por defecto: {process.env.REACT_APP_USUARIO_POR_DEFECTO}</span>
         </div>
         {/* Compras */}
         {/* <ComprasContextProvider> */}

@@ -1,6 +1,10 @@
 import axios from "axios";
-import React, { createContext, useState } from "react";
+import React, { createContext, useReducer, useState } from "react";
 import { Alumno, Tarea } from "../models";
+import alumnosReducer, {
+  actions,
+  addAlumnos,
+} from "../reducers/alumnosReducer";
 
 type Props = {
   children: any;
@@ -19,12 +23,18 @@ const AppContextProvider = ({ children }: Props) => {
   const [asignaturas, setAsignaturas] = useState<any[]>([]);
   const [tareas, setTareas] = useState<Tarea[]>([]);
   const [alumnos, setAlumnos] = useState<Alumno[]>([]);
+  // const [alumnos, alumnosDispatch] = useReducer(alumnosReducer, []);
 
-  const fetchAlumnos = async() => {
-    const response = await axios.post(url, { action: "obtenAlumnos" }) 
-    setAlumnos(response.data.alumnos)
-  }
-
+  const fetchAlumnos = async () => {
+    const response = await axios.post(url, { action: "obtenAlumnos" });
+    setAlumnos(response.data.alumnos);
+    // const action = addAlumnos(response.data.alumnos);
+    // const dispatchAction = {
+    // type: actions.SET_ALUMNOS,
+    // payload: response.data.alumnos,
+    // };
+    // alumnosDispatch(dispatchAction);
+  };
 
   return (
     <AppContext.Provider
@@ -36,7 +46,7 @@ const AppContextProvider = ({ children }: Props) => {
         tareas,
         setTareas,
         alumnos,
-        fetchAlumnos
+        fetchAlumnos,
       }}
     >
       {children}

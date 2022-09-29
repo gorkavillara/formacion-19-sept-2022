@@ -10,6 +10,7 @@ import UserProtectedRoute from "./UserProtectedRoute";
 import Login from "../views/Login";
 import Usuarios from "../views/Usuarios";
 import Perfil from "../views/Perfil";
+import Performance from "../views/Performance";
 import { AppContext } from "../contexts/AppContextProvider";
 
 const AppRoutes = () => {
@@ -39,6 +40,8 @@ const AppRoutes = () => {
       />
       <Route path="login" element={<Login setUser={setUser} />} />
       <Route path="alumnos" element={<Usuarios />} />
+      <Route path="performance" element={<Performance />} />
+
       <Route path="*" element={<h3>404 no encontrado</h3>} />
     </Routes>
   );
