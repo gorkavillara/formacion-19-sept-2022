@@ -1,17 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
+import ContadorPresent from "./ContadorPresent";
 
-type Props = {}
+type Props = {};
 
 const ContadorTesting = (props: Props) => {
-    const [contador, setContador] = useState<number>(0)
+  const [contador, setContador] = useState<number>(0);
   return (
     <div>
-        <h3>Contador Testing</h3>
-        <span>El valor del contador es: {contador}</span>
-        <button onClick={() => setContador(valor => valor - 1)}>Decrementar</button>
-        <button onClick={() => setContador(valor => valor + 1)}>Incrementar</button>
+      <h3>Contador Testing</h3>
+      <ContadorPresent contador={contador} setContador={setContador} />
     </div>
-  )
-}
+  );
+};
 
-export default ContadorTesting
+export default ContadorTesting;

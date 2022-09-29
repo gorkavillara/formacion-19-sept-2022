@@ -26,8 +26,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "build:staging": "cmd-env -f .env.staging react-scripts build",
+    "build": "npm test && react-scripts build",
+    "build:staging": "npm test && cmd-env -f .env.staging react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
