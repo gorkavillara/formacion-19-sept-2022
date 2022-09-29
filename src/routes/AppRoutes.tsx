@@ -11,6 +11,7 @@ import Login from "../views/Login";
 import Usuarios from "../views/Usuarios";
 import Perfil from "../views/Perfil";
 import Performance from "../views/Performance";
+import VistaContador from "../views/VistaContador";
 import { AppContext } from "../contexts/AppContextProvider";
 
 const AppRoutes = () => {
@@ -41,7 +42,7 @@ const AppRoutes = () => {
       <Route path="login" element={<Login setUser={setUser} />} />
       <Route path="alumnos" element={<Usuarios />} />
       <Route path="performance" element={<Performance />} />
-
+      <Route path="contador" element={<VistaContador />} />
       <Route path="*" element={<h3>404 no encontrado</h3>} />
     </Routes>
   );

@@ -53,6 +53,11 @@ function App() {
               </NavLink>
             </li>
             <li>
+              <NavLink className={activeHandler} to="/contador">
+                Contador
+              </NavLink>
+            </li>
+            <li>
               <NavLink className={activeHandler} to="/perfil">
                 Perfil
               </NavLink>
