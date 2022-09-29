@@ -29,7 +29,7 @@ function App() {
     isActive ? "selected" : "";
   return (
     <AppContextProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/proyecto-evolutivo">
         <div className="App">
           <ul className="nav-bar">
             <li>
